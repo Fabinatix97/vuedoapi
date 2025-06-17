@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Fabinatix97/vuedoapi/src/main/resources/logo.png" width="180" alt="VueDoAPI Logo">
+<img src="https://raw.githubusercontent.com/Fabinatix97/vuedoapi/refs/heads/main/src/main/resources/logo.png" width="180" alt="VueDoAPI Logo">
 
 # VueDoAPI
 
