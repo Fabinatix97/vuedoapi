@@ -26,14 +26,16 @@ public class TodoList {
 
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  @Column(updatable=false, nullable=false)
+  @Column(name = "id", updatable=false, nullable=false)
   private UUID id;
 
+  @Column(name = "title", nullable = false)
   private String title;
 
+  @Column(name = "description")
   private String description;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "todoList", cascade = CascadeType.ALL)
   private List<Todo> todos;
 
 }
