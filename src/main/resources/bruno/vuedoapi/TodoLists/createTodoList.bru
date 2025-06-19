@@ -1,0 +1,18 @@
+meta {
+  name: createTodoList
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/todo-lists
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Vegetables",
+    "description": "List of vegetables"
+  }
+}
