@@ -26,6 +26,4 @@ public class TodoDto {
 
   private TodoPriority priority;
 
-  private TodoListDto todoList;
-
 }
