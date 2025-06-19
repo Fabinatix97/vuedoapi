@@ -1,5 +1,7 @@
 package com.fabinatix.vuedoapi.repositories;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,6 +12,8 @@ import com.fabinatix.vuedoapi.domain.entities.Todo;
 @Repository
 public interface TodoRepository extends CrudRepository<Todo, UUID> {
 
-    // Additional methods specific to Todo can be added here if needed
+    List<Todo> findByTodoListId(UUID todoListId);
+    Optional<Todo> findByTodoListIdAndId(UUID todoListId, UUID id);
+    void deleteByTodoListIdAndId(UUID todoListId, UUID id);
 
 }
