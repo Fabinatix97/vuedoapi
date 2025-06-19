@@ -39,7 +39,8 @@ Type     | Route | Function
 `GET`    | /todo-lists | List all todo lists
 `POST`   | /todo-lists | Create a todo list
 `GET`    | /todo-lists/{todo_list_id} | Get a specific todo list
-`PUT`    | /todo-lists/{todo_list_id} | Update a todo list
+`PUT`    | /todo-lists/{todo_list_id} | Fully update a todo list
+`PATCH`  | /todo-lists/{todo_list_id} | Partially update a todo list
 `DELETE` | /todo-lists/{todo_list_id} | Delete a todo list
 `GET`    | /todo-lists/{todo_list_id}/todos | List all todos
 `POST`   | /todo-lists/{todo_list_id}/todos | Create a todo
