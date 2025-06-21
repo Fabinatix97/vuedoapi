@@ -25,7 +25,7 @@ public final class TestDataUtil {
     return Todo.builder()
         .title("Todo B")
         .description("Description for Todo B")
-        .status(TodoStatus.CLOSED)
+        .status(TodoStatus.DONE)
         .priority(TodoPriority.MEDIUM)
         .build();
   }
