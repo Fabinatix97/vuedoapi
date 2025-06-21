@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -66,6 +67,19 @@ public class TodoController {
       TodoDto todoDto = todoMapper.mapTo(todo);
       return new ResponseEntity<>(todoDto, HttpStatus.OK);
     }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+  }
+
+  @PatchMapping(path = "/{todo_id}")
+  public ResponseEntity<TodoDto> partiallyUpdateTodo(
+    @PathVariable UUID todo_list_id,
+    @PathVariable UUID todo_id,
+    @RequestBody TodoDto todoDto
+  ) {
+    Todo todo = todoMapper.mapFrom(todoDto);
+    Todo updatedTodo = todoService.partialUpdate(todo_list_id, todo_id, todo);
+    TodoDto updatedTodoDto = todoMapper.mapTo(updatedTodo);
+
+    return new ResponseEntity<>(updatedTodoDto, HttpStatus.OK);
   }
   
   @PutMapping(path = "/{todo_id}")

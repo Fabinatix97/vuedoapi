@@ -60,6 +60,19 @@ public class TodoServiceImpl implements TodoService {
     return todoRepository.findByTodoListIdAndId(todo_list_id, todo_id);
   }
 
+  @Override
+  public Todo partialUpdate(UUID todoListId, UUID todoId, Todo todo) {
+    todo.setId(todoId);
+
+    return todoRepository.findByTodoListIdAndId(todoListId, todoId).map(existingTodo -> {
+      Optional.ofNullable(todo.getTitle()).ifPresent(existingTodo::setTitle);
+      Optional.ofNullable(todo.getDescription()).ifPresent(existingTodo::setDescription);
+      Optional.ofNullable(todo.getStatus()).ifPresent(existingTodo::setStatus);
+      Optional.ofNullable(todo.getPriority()).ifPresent(existingTodo::setPriority);
+      return todoRepository.save(existingTodo);
+    }).orElseThrow(() -> new RuntimeException("Todo does not exist"));
+  }
+
   @Transactional
   @Override
   public Todo update(UUID todoListId, UUID todoId, Todo todo) {

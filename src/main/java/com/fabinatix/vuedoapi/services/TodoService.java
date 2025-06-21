@@ -14,6 +14,8 @@ public interface TodoService {
 
   Optional<Todo> findOne(UUID todo_list_id, UUID todo_id);
 
+  Todo partialUpdate(UUID todoListId, UUID todoId, Todo todo);
+
   Todo update(UUID todoListId, UUID todoId, Todo todo);
 
   void delete(UUID todo_list_id, UUID todo_id);
