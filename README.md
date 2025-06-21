@@ -45,7 +45,8 @@ Type     | Route | Function
 `GET`    | /todo-lists/{todo_list_id}/todos | List all todos
 `POST`   | /todo-lists/{todo_list_id}/todos | Create a todo
 `GET`    | /todo-lists/{todo_list_id}/todos/{todo_id} | Get a specific todo
-`PUT`    | /todo-lists/{todo_list_id}/todos/{todo_id} | Update a todo
+`PATCH`  | /todo-lists/{todo_list_id}/todos/{todo_id} | Partially update a todo
+`PUT`    | /todo-lists/{todo_list_id}/todos/{todo_id} | Fully update a todo
 `DELETE` | /todo-lists/{todo_list_id}/todos/{todo_id} | Delete a todo
 
 ## Domain
