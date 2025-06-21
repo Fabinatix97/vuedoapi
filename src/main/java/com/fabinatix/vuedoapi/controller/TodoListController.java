@@ -75,7 +75,7 @@ public class TodoListController {
     return new ResponseEntity<>(updateTodoListDto, HttpStatus.OK);
   }
 
-  @DeleteMapping(path = "/todo-lists/{todo_list_id}")
+  @DeleteMapping(path = "{todo_list_id}")
   public ResponseEntity<Void> deleteTodoList(@PathVariable UUID todo_list_id) {
     todoListService.delete(todo_list_id);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
