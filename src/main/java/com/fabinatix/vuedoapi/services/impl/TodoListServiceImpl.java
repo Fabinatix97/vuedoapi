@@ -28,7 +28,7 @@ public class TodoListServiceImpl implements TodoListService {
     if(null != todoList.getId()) {
       throw new IllegalArgumentException("Todo list already has an ID!");
     }
-    if(null != todoList.getTitle() || todoList.getTitle().isBlank()) {
+    if (todoList.getTitle() == null || todoList.getTitle().isBlank()) {
       throw new IllegalArgumentException("Todo list title must be present!");
     }
     return todoListRepository.save(todoList);
