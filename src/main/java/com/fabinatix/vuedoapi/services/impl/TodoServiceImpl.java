@@ -56,10 +56,11 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public Optional<Todo> findOne(UUID todo_list_id, UUID todo_id) {
-    return todoRepository.findByTodoListIdAndId(todo_list_id, todo_id);
+  public Optional<Todo> findOne(UUID todoListId, UUID todoId) {
+    return todoRepository.findByTodoListIdAndId(todoListId, todoId);
   }
 
+  @Transactional
   @Override
   public Todo partialUpdate(UUID todoListId, UUID todoId, Todo todo) {
     todo.setId(todoId);
@@ -101,8 +102,8 @@ public class TodoServiceImpl implements TodoService {
 
   @Transactional
   @Override
-  public void delete(UUID todo_list_id, UUID todo_id) {
-    todoRepository.deleteByTodoListIdAndId(todo_list_id, todo_id);
+  public void delete(UUID todoListId, UUID todoId) {
+    todoRepository.deleteByTodoListIdAndId(todoListId, todoId);
   }
 
 }
