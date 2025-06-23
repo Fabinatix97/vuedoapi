@@ -12,12 +12,12 @@ public interface TodoService {
 
   List<Todo> findAll(UUID todoListId);
 
-  Optional<Todo> findOne(UUID todo_list_id, UUID todo_id);
+  Optional<Todo> findOne(UUID todoListId, UUID todoId);
 
   Todo partialUpdate(UUID todoListId, UUID todoId, Todo todo);
 
   Todo update(UUID todoListId, UUID todoId, Todo todo);
 
-  void delete(UUID todo_list_id, UUID todo_id);
+  void delete(UUID todoListId, UUID todoId);
 
 }
