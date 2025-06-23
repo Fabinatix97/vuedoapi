@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -61,6 +62,18 @@ public class TodoListController {
     }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
+  @PatchMapping(path = "/{todo_list_id}")
+  public ResponseEntity<TodoListDto> partiallyUpdateTodoList(
+    @PathVariable UUID todo_list_id,
+    @RequestBody TodoListDto todoListDto
+  ) {
+    TodoList todoList = todoListMapper.mapFrom(todoListDto);
+    TodoList updatedTodoList = todoListService.partialUpdate(todo_list_id, todoList);
+    TodoListDto updatedTodoListDto = todoListMapper.mapTo(updatedTodoList);
+
+    return new ResponseEntity<>(updatedTodoListDto, HttpStatus.OK);
+  }
+
   @PutMapping(path = "/{todo_list_id}")
   public ResponseEntity<TodoListDto> updateTodoList(
     @PathVariable UUID todo_list_id,
@@ -75,7 +88,7 @@ public class TodoListController {
     return new ResponseEntity<>(updateTodoListDto, HttpStatus.OK);
   }
 
-  @DeleteMapping(path = "{todo_list_id}")
+  @DeleteMapping(path = "/{todo_list_id}")
   public ResponseEntity<Void> deleteTodoList(@PathVariable UUID todo_list_id) {
     todoListService.delete(todo_list_id);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);

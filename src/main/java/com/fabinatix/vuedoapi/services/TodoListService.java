@@ -14,6 +14,8 @@ public interface TodoListService {
 
   Optional<TodoList> findOne(UUID todoListId);
 
+  TodoList partialUpdate(UUID todoListId, TodoList todoList);
+
   TodoList update(UUID todoListId, TodoList todoList);
   
   void delete(UUID todoListId);

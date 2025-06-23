@@ -49,6 +49,18 @@ public class TodoListServiceImpl implements TodoListService {
 
   @Transactional
   @Override
+  public TodoList partialUpdate(UUID todoListId, TodoList todoList) {
+    todoList.setId(todoListId);
+
+    return todoListRepository.findById(todoListId).map(existingTodoList -> {
+      Optional.ofNullable(todoList.getTitle()).ifPresent(existingTodoList::setTitle);
+      Optional.ofNullable(todoList.getDescription()).ifPresent(existingTodoList::setDescription);
+      return todoListRepository.save(existingTodoList);
+    }).orElseThrow(() -> new RuntimeException("Todo list does not exist"));
+  }
+
+  @Transactional
+  @Override
   public TodoList update(UUID todoListId, TodoList todoList) {
     if(null == todoList.getId()) {
       throw new IllegalArgumentException("Todo list must have an ID");
